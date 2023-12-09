@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Customizable Time Clock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #clock {
+      font-size: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+
+      // Add leading zeros if necessary
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+    updateClock();
+
+    // Function to customize the clock
+    function customizeClock(bgColor, clockColor, fontSize, fontFamily) {
+      document.body.style.backgroundColor = bgColor;
+      document.getElementById("clock").style.color = clockColor;
+      document.getElementById("clock").style.fontSize = fontSize;
+      document.body.style.fontFamily = fontFamily;
+    }
+
+    // Customize the clock with your preferences
+    customizeClock("#f0f8f7", "#59886b", "40px", "Arial, sans-serif");
+    // Replace the values above with your preferred colors, font size, and font family
+  </script>
+</body>
+</html>
