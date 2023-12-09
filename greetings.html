@@ -8,7 +8,7 @@
       text-align: center;
       padding-top: 50px;
       color: white; /* Text color set to white */
-      background-color: #BACDB3; /* Updated pastel green background color */
+      background-color: #BACDB3; /* Updated background color */
       background-image: url('leaf.png'); /* Image URL for the leaf */
       background-repeat: repeat; /* Repeat the leaf image */
     }
@@ -30,4 +30,30 @@
 
       // Add leading zeros if necessary
       hours = (hours < 10 ? "0" : "") + hours;
-      minutes = (mi
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+
+      // Greeting based on the time of day
+      var greeting = "";
+      if (hours >= 5 && hours < 12) {
+        greeting = "Good morning";
+      } else if (hours >= 12 && hours < 18) {
+        greeting = "Good afternoon";
+      } else {
+        greeting = "Good evening";
+      }
+      document.getElementById("greeting").innerHTML = greeting;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Initial call to display the clock immediately
+    updateClock();
+  </script>
+</body>
+</html>
