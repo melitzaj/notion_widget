@@ -9,8 +9,9 @@
       padding-top: 50px;
       color: white; /* Text color set to white */
       background-color: #BACDB3; /* Updated background color */
-      background-image: url('leaf.png'); /* Image URL for the leaf */
-      background-repeat: repeat; /* Repeat the leaf image */
+      background-image: url('leaf-pattern.png'), url('leaf.png'); /* Image URL for the leaf pattern and leaf */
+      background-repeat: repeat, no-repeat; /* Repeat the leaf pattern; show leaf once */
+      background-position: center center; /* Center the leaf image */
     }
     #clock {
       font-size: 40px;
@@ -27,13 +28,17 @@
       var hours = now.getHours();
       var minutes = now.getMinutes();
       var seconds = now.getSeconds();
+      var meridiem = hours >= 12 ? 'PM' : 'AM';
+
+      // Convert hours to 12-hour format
+      hours = hours % 12 || 12;
 
       // Add leading zeros if necessary
       hours = (hours < 10 ? "0" : "") + hours;
       minutes = (minutes < 10 ? "0" : "") + minutes;
       seconds = (seconds < 10 ? "0" : "") + seconds;
 
-      var timeString = hours + ":" + minutes + ":" + seconds;
+      var timeString = hours + ":" + minutes + ":" + seconds + " " + meridiem;
 
       document.getElementById("clock").innerHTML = timeString;
 
